@@ -47,6 +47,6 @@ RUN chmod u+x /start.sh
 
 ENV GIT_BRANCH=8.0.x \
   GIT_PATCH="" \
-  TESTS="--verbose --all"
+  TESTS="--all"
 
 CMD ["/bin/bash", "/start.sh"]
