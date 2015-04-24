@@ -17,12 +17,14 @@ echo "date.timezone = Europe/Oslo" >> /usr/local/etc/php/php.ini
 
 /.composer/vendor/drush/drush/drush si minimal --db-url=mysqli://drupal:drupal@127.0.0.1/drupal --db-su=root -y
 
+/.composer/vendor/drush/drush/drush vset clean_url 0 -y
+
 /.composer/vendor/drush/drush/drush st
 
 /.composer/vendor/drush/drush/drush en simpletest -y
 
 if [ "${GIT_BRANCH}" = "8.0.x" ]; then
-  php ./core/scripts/run-tests.sh --verbose --color --url "http://localhost/checkout/" --concurrency 4 --all
+  php ./core/scripts/run-tests.sh --verbose --color --url "http://localhost/checkout/index.php" --concurrency 4 --all
 else
   php ./scripts/run-tests.sh --verbose --color --url "http://localhost/checkout/" --concurrency 4 --all
 fi 
